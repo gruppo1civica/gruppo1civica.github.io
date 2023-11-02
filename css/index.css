@@ -1,5 +1,18 @@
 html {
-    background-color: #1A1A1A;
+    --header-height: 70px;
+    --bg-colour: linear-gradient(0deg, rgba(26,26,26,1) 40%, rgba(0,40,0,1) 100%);
+    --fg-colour: #2A2A2A;
+    --header-colour: #232323;
+    --shape-size: 150px;
+    --side-shape-distance: 50px;
+    --centre-shape-distance: calc(var(--side-shape-distance) * 8);
+    --shape-height-distance: calc(var(--shape-size) / 4);
+
+    background: var(--bg-colour);
+}
+
+div.mainContent {
+    min-height: calc(100vh - var(--header-height) * 2);
 }
 
 .bg1 {
@@ -9,16 +22,15 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 0;
+    z-index: -10;
 }
 
 body {
     margin: 0;
-    padding: 0;
-    min-height: 100vh;
+    padding: 0
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6, li {
     color: #ffffff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -32,9 +44,9 @@ p {
 }
 
 header {
-    height: 6vh;
+    height: var(--header-height);
     width: 100%;
-    background-color: #232323;
+    background-color: var(--header-colour);
     text-align: center;
     overflow: hidden;
     display: flex;
@@ -43,10 +55,10 @@ header {
 }
 
 footer {
-    height: 6vh;
+    height: var(--header-height);
     width: 100%;
     bottom: 0;
-    background-color: #232323;
+    background-color: var(--header-colour);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -55,18 +67,16 @@ footer {
 
 div.foreground {
     top: 0;
-    background-color: #1A1A1A;
+    background: var(--bg-colour);
     padding: 40px;
     transform: translateZ(0px)
 }
 
 div.textContainer {
-    background-color: #2A2A2A;
+    background-color: var(--fg-colour);
     margin: auto;
     width: 80vw;
-    padding: 35px;
-    padding-top: 1px;
-    padding-bottom: 7px;
+    padding: 1px 35px 7px;
     text-align: justify;
     border-radius: 7px;
     margin-bottom: 30px;
@@ -74,4 +84,122 @@ div.textContainer {
 
 .noBottomMargin {
     margin-bottom: 0;
+}
+
+.shape {
+    width: var(--shape-size);
+    height: var(--shape-size);
+    border-radius: 10px;
+    display: inline-block;
+    z-index: -2;
+    transition: background-size .5s, background-color .5s;
+    background-position: 50%;
+    background-size: 100%;
+    background-blend-mode: multiply;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+}
+
+.wood {
+    background-image: url("../assets/wood.png");
+}
+
+.glass {
+    background-image: url("../assets/glass.png");
+}
+
+.paper {
+    background-image: url("../assets/paper.png");
+}
+
+.fabrics {
+    background-image: url("../assets/fabrics.png");
+}
+
+.tires {
+    background-image: url("../assets/tires.png");
+}
+
+.alluminium {
+    background-image: url("../assets/alluminium.png");
+}
+
+.plastic {
+    background-image: url("../assets/plastic.png");
+}
+
+.organics {
+    background-image: url("../assets/organics.png");
+}
+
+.group-side {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.group-centre {
+    margin: var(--shape-height-distance) auto;
+    width: fit-content;
+}
+
+.side-left-shape {
+    margin-right: calc(var(--side-shape-distance));
+}
+
+.centre-left-shape {
+    margin-right: var(--centre-shape-distance);
+}
+
+.octagon-circle {
+    position: absolute;
+    width: calc(var(--centre-shape-distance) + var(--shape-size));
+    height: calc(var(--centre-shape-distance) + var(--shape-size));
+    border-radius: 50%;
+    border: 30px solid var(--fg-colour);
+    top: calc(var(--shape-size) / 2 - 20px);
+    left: calc(50% - (var(--centre-shape-distance) + var(--shape-size)) / 2 - 30px);
+    z-index: -5;
+    background-image: url("../assets/mainButton.png");
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.shape:hover {
+    background-size: 150%;
+    background-color: #656565;
+}
+
+.arrow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/arrow.png");
+    background-position: 50%;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.arrow:hover {
+    opacity: 100;
+}
+
+.vanishing-title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    bottom: 10px;
+}
+
+.economy-button {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    z-index: 10;
 }
